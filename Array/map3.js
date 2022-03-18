@@ -1,4 +1,11 @@
-// Desafio Minha resolucao:
+Array.prototype.map2 = function (callback) {
+    const newArray = [];
+    for (let i = 0; i < this.lenght; i++) {
+        newArray.push(callback(this[i], i, this));
+    }
+    return newArray;
+};
+
 const carrinho = [
     '{ "nome": "Borracha", "preco": 3.45 }',
     '{ "nome": "Caderno", "preco": 13.90 }',
@@ -6,16 +13,8 @@ const carrinho = [
     '{ "nome": "Caneta", "preco": 7.50 }',
 ];
 
-const precos = carrinho.map(function (e) {
-    let objeto = JSON.parse(e);
-    return objeto.preco;
-});
-
-console.log(precos);
-
-// Resolucao da Cod3r
 const paraObjeto = (json) => JSON.parse(json);
 const apenasPreco = (produto) => produto.preco;
 
-const resultado = carrinho.map(paraObjeto).map(apenasPreco);
+const resultado = carrinho.map2(paraObjeto).map2(apenasPreco);
 console.log(resultado);
