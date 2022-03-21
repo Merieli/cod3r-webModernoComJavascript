@@ -6,6 +6,7 @@ const objeto = {
 const objetoParaArray = (object) => Object.entries(object);
 
 console.log(objetoParaArray(objeto));
+
 console.log(
     objetoParaArray({
         codigo: 11111,

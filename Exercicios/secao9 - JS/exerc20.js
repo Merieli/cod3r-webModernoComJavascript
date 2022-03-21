@@ -1,10 +1,14 @@
 // Criar uma função que receba um array de números e retorne o menor número desse array.
-const isSmaller = (elemento, indice, array) => {
-    const menor = 0;
-    return elemento < menor ? menor = elemento
-}
+
 const menorNumero = (array) => {
-    return array.filter(isSmaller).fitler(isSmaller);
+    const menor = array[1];
+    array.forEach((element) => {
+        if (element < menor) {
+            menor = element;
+            console.log("menor:" + menor);
+        }
+    });
+    return menor;
 };
 
 console.log(menorNumero([10, 5, 35, 65]));
