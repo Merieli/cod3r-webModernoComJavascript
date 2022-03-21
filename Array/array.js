@@ -35,3 +35,4 @@ aprovados = ["Bia", "Carlos", "Ana"];
 aprovados.splice(1, 2); // primeiro passar como parametro o indice do elemento que quero iniciar, e depois o número da quantidade de elementos  que irei remover a partir desse indice
 console.log(aprovados);
 aprovados.splice(1, 2, "Elemento1", "Elemento2"); // para adicionar elementos basta escrever o valor entre aspas, e esses valores serao inseridos a partir do indice definido
+console.log(aprovados);
