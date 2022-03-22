@@ -27,13 +27,10 @@ const melhorAluno = (listaEstudantes) => {
         listaMedias = lista;
     });
 
-    listaMedias.forEach((e, i, list) => {
-        if (e.media > 0 || e.media > maior.media) {
-            maior = e;
-        }
-    });
-
-    return maior;
+    listaMedias.sort(
+        (estudanteA, estudanteB) => estudanteB.media - estudanteA.media
+    );
+    return listaMedias[0];
 };
 
 console.log(melhorAluno(estudantes));
