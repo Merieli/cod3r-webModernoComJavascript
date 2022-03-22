@@ -6,10 +6,34 @@ const estudantes = {
     Carla: [7, 7, 8, 9],
 };
 
+const ordenaAluno = (objeto) => {
+    return Object.entries(objeto).map((element) => {
+        return { nome: element[0], nota: element[1] };
+    });
+};
+
 const melhorAluno = (listaEstudantes) => {
-    const array = Object.entries(listaEstudantes);
-    array.forEach(function (e) {});
-    return console.log(listaEstudantes[0]);
+    const listaNotas = ordenaAluno(listaEstudantes);
+    let listaMedias = 0;
+    let maior = 0;
+
+    listaNotas.forEach((element, indice, lista) => {
+        const nota = element.nota;
+        const divisor = nota.length;
+        const total = nota.reduce((total, nota) => total + nota);
+
+        element.media = total / divisor;
+        delete element.nota;
+        listaMedias = lista;
+    });
+
+    listaMedias.forEach((e, i, list) => {
+        if (e.media > 0 || e.media > maior.media) {
+            maior = e;
+        }
+    });
+
+    return maior;
 };
 
 console.log(melhorAluno(estudantes));
