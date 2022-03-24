@@ -13,3 +13,8 @@ exports = {
     nome: "Teste",
 };
 console.log(module.exports);
+
+// Maneira correta de reatribuir um valor de uma variavel do modulo para ser exportado:
+module.exports = {
+    publico: true,
+};
