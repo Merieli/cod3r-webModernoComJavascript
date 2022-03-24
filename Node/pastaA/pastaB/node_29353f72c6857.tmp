@@ -7,7 +7,7 @@ const moduloA1 = require("/home/merieli/DEV/udemy-webmoderno-com-javascript-fron
 
 console.log(moduloA1.ola);
 
-// Importando um módulo da pasta node module (não é um boa pratica criar arquivos a partir da pasta node_modules, estes devem ser sempre instalados pelo npm)
+// Importando um módulo da pasta node module
 const saudacao = require("saudacao"); // Toda pasta de um node module executa o arquivo "index.js"
 console.log(saudacao.ola);
 
@@ -19,5 +19,5 @@ http.createServer((req, res) => {
 }).listen(8080); //com isso abrira a url "http://localhost:8080/" no navegador executa o código
 
 // Para importar um modulo node que tem como nome "index.js" basta referenciar a pasta em que o arquivo está que o node reconhece automaticamente que deve ser importado o arquivo index dessa pasta
-const c = require("./pastaC");
+const c = require('./pastaC')
 console.log(c.ola2);
