@@ -29,6 +29,41 @@
     </form>
     <div id="resultado"></div>
     <script>
-        // ...
+        document.usuarioForm.onsubmit = async e => { //pega o formulario pelo valor do seu atributo name
+            e.preventDefault()
+
+            const form = e.target; //elemento que disparou o evento
+            const data = new FormData(form) //pega todos os dados que forem preenchidos no formulario e insere no objeto
+            data.append('ajax', true)
+
+            const options = {
+                method: form.method,
+                body: new URLSearchParams(data) //dados do formulario tratados para o backend
+            }
+
+            const resultado = document.getElementById('resultado')
+            /*
+            // Requisição Ajax com Promisse:
+            fetch(form.action, options)
+                .then(resp => resp.json())
+                .then(json => {
+                    resultado.innerHTML = JSON.stringify(json)
+                })
+                .catch(e => {//tratando erros do fetch
+                    resultado.innerHTML = e
+            })
+            */
+            
+            // Mesma Requisição Ajax acima, mas com Async await:
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+
+            } catch (e) {
+                resultado.innerHTML = e
+            }
+
+        }
     </script>
 </body>

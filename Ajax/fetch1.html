@@ -11,6 +11,14 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        const url = 'dados/estados.json'    
+        fetch(url)
+            .then(resp => resp.json()) //o json() retorna um promisse em formato json com a resposta da requisição
+            .then(estados => { // com a resposta convertida para json é manipulada a resposta
+                const itens = estados.reduce( //os estados vem em formato de array com dados em objeto
+                    (html, estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
     </script>
 </body>

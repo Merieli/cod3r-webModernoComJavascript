@@ -12,6 +12,14 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        // Axios  é uma biblioteca cliente HTTP "muito usada no React para requisições Ajax", que por ser de terceiros não é suportado por padrão no browser
+        const url = 'dados/estados.json'
+        axios(url).then(resp => { 
+            const itens = resp.data.reduce( //com o Axios dentro do primeiro then já é possivel obter a resposta da requisição em json convertido
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+        
     </script>
 </body>

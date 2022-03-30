@@ -25,6 +25,12 @@
     </nav>
     <div class="pagina"></div>
     <script>
-        // ...
+        // SPA(Single Page Application) - site de apenas uma pagina que o que muda é seu conteudo
+        function navegarViaAjax(url, seletor){
+            if(!url || !seletor) return 
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                .then()
+        }
     </script>
 </body>
