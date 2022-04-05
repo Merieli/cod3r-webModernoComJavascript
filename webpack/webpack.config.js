@@ -1,7 +1,7 @@
 // este arquivo é interpretado pelo Node, por isso deve ser escrito com a sintaxe que o Node entende
 const modoDev = process.env.NODE_ENV !== 'production'; //variavel NODE_ENV setada a partir do package.json usando o plugin cross-env - Dessa forma ao usar o comando npm start será gerado os arquivos como mode development e se usar "npm build" os arquivos serão gerados como mode production
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //extrai o CSS para um arquivo especifico
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
@@ -27,7 +27,7 @@ module.exports = {
     },
     plugins: [ //define os plugins
         new MiniCssExtractPlugin({ //função construtora instanciada
-            filename: "estilo.css"
+            filename: "estilo.css" //nome do arquivo que será gerado a partir da interpretação dos arquivos CSS
         })
     ],
     module: {
@@ -35,10 +35,10 @@ module.exports = {
             {
                 test: /\.s?[ac]ss$/, //Regex que testa se o arquivo é do tipo sass ou css ou scss
                 use: [
-                    MiniCssExtractPlugin.loader, //extrai o CSS para fora
+                    MiniCssExtractPlugin.loader, //extrai o CSS para um arquivo externo
                     //'style-loader', //adiciona o CSS a DOM injetando a tag <style> pelo arquivo JS
                     'css-loader', //interpreta @import, url()...
-                    'sass-loader'
+                    'sass-loader' //interpreta arquivos Sass
                 ]
             }, {
                 test: /\.(png|svg|jpg|gif)$/,
