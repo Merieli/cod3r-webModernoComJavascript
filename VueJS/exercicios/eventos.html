@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ contador }}</p>
+        <p>
+            <!--A diretiva "v-on" faz o binding de um método para ser chamado quando ocorrer o evento de nome definido após os ":" e depois do sinal de igual entre aspas deve ser definido o nome do método que será executado-->
+            <button v-on:click="add" >+1</button> 
+            <!--O mesmo efeito do v-on tem o "@" usado como o exemplo abaixo-->
+            <!--E também é possível passar uma expressão simples de 1 linha entre aspas-->
+            <button @click="contador -= 2" >-2</button> 
+        </p>
+        <p @mousemove="atualizarPosicao">
+            Coordenadas: {{ x }} e {{ y }} 
+            <span @mousemove.stop>Aqui não</span><!--o ".stop" após o nome do evento faz com que ele pare de ser monitorado -->
+            <span @mousemove="stop">Aqui também não</span><!--da mesma forma é possível usar um método criado para para o monitoramento do evento-->
+        </p>
+        <input type="text" @keyup.enter="alerta"><!--"@keyup" captura o evento de pressionamento da tecla definida após o ponto-->
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                x: 0,
+                y: 0,
+                contador: 0
+            },
+            methods: {
+                add() {
+                    this.contador++
+                },
+                atualizarPosicao(e){ //recebe um evento e desse evento captura as coordenadas x e y de onde ekle ocorreu
+                    this.x = e.clientX,
+                    this.y = e.clientY
+                },
+                stop(e){
+                    e.stopPropagation();
+                },
+                alerta(){
+                    alert('Enter!')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

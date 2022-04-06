@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Binding</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <p>{{ link }}</p>
+        <p><a href="{{ link }}">Canal?</a></p> <!--Não é possível acessar valor Vue pelo href dessa forma-->
+        <p><a v-bind:href="link">Canal</a></p><!--Para usar um valor Vue em href é preciso usar o binding dessa forma, com o "v-bind" se tem uma diretiva (propriedade personalizada) do Vue que determina que aquele valor será interpolado-->
+        <p><a :href="link"></a></p> <!--Outra forma de realizar o binding de maneira reduzida que também é valida é usar ":" antes de qualquer propriedade que deseje que o Vue resolva seu valor-->
+        <p>
+            <input type="text" v-model="nome"><br> <!--atributo "v-model" faz uma atualização em duas direções ou o chamado binding bidirecional, sendo assim quando o valor de nome for alterado no input esse valor será reatributo para data e refletido em todas chamadas do atributo nome-->
+            <input type="text" :value="nome"><br> <!--Dessa forma sem o v-model o dado inserido no input não irá atualizar o valor do atributo nome-->
+            <span>{{ nome }}</span>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                nome: "Maria",
+                link: "htttps://youtube.com/cod3rcursos"
+            },
+            watch: { //dentro do watch é possível colocar funções com o mesmo nome dos atributos definidos em data, que são chamadas quando o valor do determinado atributo é alterado
+                nome(novoValor){ //dessa forma a função criada responde a alteração do atributo, ou seja, quando o atributo tiver seu valor alterado a função será executada
+                    console.log(novoValor.toUpperCase())
+                }                
+            }
+        })
+    </script>
+</body>
+</html>
