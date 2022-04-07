@@ -7,9 +7,31 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <!--O componente Vue criado é inserido no HTML no formato de tag, sendo o nome da tag o mesmo do componente, e ele pode ser utilizado quantas vezes for necessário-->
+        <saudacao nome="Ana"></saudacao> 
+        <saudacao nome="Bia"></saudacao>
+        <saudacao nome="Julia"></saudacao>
+    </div>
     <script>
-        // ...
+        // Para criar um novo componente 
+        Vue.component('saudacao', {
+            props: ['nome'], //o atributo "props" são os parametros do componente em formato array
+            data: function(){ 
+                //ao trabalhar com data dentro de um componente é preciso retornar uma função e no retorno dela inserir os dados desejados, para que o objeto data seja único para cada componente inserido:
+                return {
+                    contador: 0
+                }
+            },
+            template: `
+                <div>Bom dia {{ nome }}!</div>
+            `
+        })//São passados dois parametros, o primeiro é o nome do componente e o segundo um objeto com as propriedades Vue "data, methods, etc"
+
+        // a partir do componente definido, é criado uma nova instancia Vue:
+        new Vue({
+            el: '#app',
+        })
     </script>
 </body>
 </html>

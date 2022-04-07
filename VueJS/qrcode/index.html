@@ -12,7 +12,25 @@
 <body>
 
     <script>
-        // ...
+        new Vue({
+            el: "#app",
+            data: {
+                title: 'Gerador QRCode',
+                text: 'https://www.cod3r.com.br',
+                qrcode: new QRious({ size: 300 }) //criação do QRcode de tamanho 300 usando uma instancia da lib QRious
+            },
+            computed: {
+                newQRCode(){
+                    this.qrcode.value = this.text
+                    return this.qrcode.toDataURL() //gera um atributo data que pode ser associado a uma imagem para gerar o qrcode
+                }
+            },
+            methods: {
+                onData(event){
+                    this.text = event.target.value
+                }
+            }
+        })
     </script>
 </body>
 

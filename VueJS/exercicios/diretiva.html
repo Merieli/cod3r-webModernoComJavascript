@@ -7,9 +7,27 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <input type="text" v-model="nome">
+        <div v-inverter="nome"></div><!--Diretiva que não existe no Vue-->
+    </div>
     <script>
-        // ...
+        // Para criar uma nova diretiva deve ser passado como parâmetro primeiro o nome que se deseja dar a essa nova diretiva "sem o 'v-'" e depois o objeto associado que define o que a diretiva irá executar
+        Vue.directive('inverter', {
+            //o "componentUpdated" é o metodo que captura quando o componente é atualizado, nele deve ser passado como parâmetro primeiro o próprio elemento e depois o binding"que possibilita obter o valor que foi aplicado dentro da diretiva entre aspas"
+            componentUpdated(el, binding){
+                const invertido = binding.value.split('').reverse().join('')
+                //pega o valor associado ao atributo, divide os caracteres, inverte e une novamente
+                el.innerHTML = invertido; //define como valor da diretiva a string invertida
+            } 
+        })
+
+        new Vue({
+            el: "#app",
+            data: {
+                nome: ''
+            }
+        })
     </script>
 </body>
 </html>

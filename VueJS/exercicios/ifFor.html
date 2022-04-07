@@ -7,9 +7,39 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
-
+    <div id="app">
+        <!--o "v-for" inicia um loop em determinados dados, após o sinal de igual dentro de aspas deve ser definido qual será o array iterado e o nome das variavel para o elemento e o indice da seguinte forma: "(elementoIterado, indice) in arrayDeDados"-->
+        <p v-for="(aluno, i) in alunos"> 
+            <!--Dentro da tag com o "v-for" é possível exibir os dados desejados do array de dados-->
+            {{ i + 1 }}) {{ aluno.nome }} - {{ aluno.nota }} -
+            <!--o "v-if" inicia uma condicional definida entre aspas que caso seja verdadeiro será exibida a tag HTML com seu conteudo, mas caso seja falso a tag não irá para o HML-->
+            <span v-if="aluno.nota >= 9">Quadro de Honra</span>
+            <!--o "v-else-if" está associado a primeira lógica, e caso ela não ocorra ira cair nessa outra condicional-->
+            <span v-else-if="aluno.nota >= 7">Aprovado</span>
+            <span v-else-if="aluno.nota >= 3">Recuperação</span>
+            <!--o "v-else" não precisa de valor condicional definido, porque só ocorrerá caso as condicional anteriores sejam falsas-->
+            <span v-else>Reprovado</span>
+        </p>
+        <ul style="list-style: none;">
+            <!--Outra forma de usar o for iterando sob uma sequencia numérica:-->
+            <li v-for="n in 5"><!--Como no exemplo se não desejar utilizar o indice do loop posso remover os "()"-->
+                <!--o "v-show" também é uma condicional mas diferente do if, nela a tag continua no HTML e é somente ocultada via CSS inline -->
+                <span v-show="n >= 4">{{n}}</span> 
+            </li> 
+        </ul>
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                alunos: [
+                    { nome: 'Ana', nota: 7.8 },
+                    { nome: 'Bia', nota: 9.1 },
+                    { nome: 'Carlos', nota: 6.8 },
+                    { nome: 'Daniel', nota: 2.8 }
+                ]
+            }
+        })
     </script>
 </body>
 </html>

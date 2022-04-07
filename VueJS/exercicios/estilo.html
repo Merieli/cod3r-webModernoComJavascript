@@ -12,9 +12,19 @@
     </style>
 </head>
 <body class="exercicio">
-
+    <!--Para uma condicional de aplicação de classe para estilização é possível usar o ":" binding antes de class e entre aspas colocar a condicional de valor bolleano que quando for true a classe será aplicada, da seguinte forma: {nomeClass: valorBoleano}-->
+    <div id="app" @click="aplicarCor = !aplicarCor"
+        :class="{vermelho: aplicarCor}"
+    ><!-- Se o nome da classe tiver hífen é preciso colocar seu nome entre aspas simples "''" -->
+        Teste
+    </div>
     <script>
-        // ...
+        new Vue({
+            el: "app",
+            data: {
+                aplicarCor: false
+            }
+        })
     </script>
 </body>
 </html>

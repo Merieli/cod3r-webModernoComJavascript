@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Componente</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <script src="/js/vue.min.js"></script>
+</head>
+<body class="exercicio">
+    <div id="app">
+        <!--Desafio: Criar um componente que seja um contador, possuindo clique do botão que incrementa como o exemplo anteriormente feito, duplicar esses componentes no HTML e verificar se ele tera o mesmo comportamento-->
+        <contador></contador>
+        <contador></contador>
+        <contador></contador>
+        <contador></contador>
+    </div>
+    <script>
+        Vue.component('contador', {
+            data: function(){
+                return {
+                    contador: 0
+                }
+            },
+            methods: { 
+                more(){
+                    this.contador++
+                },
+                less(){
+                    this.contador--
+                }
+            },
+            template: `
+                <div> 
+                    {{contador}} 
+                    <button @click="more">+1</button>
+                    <button @click="less">-1</button>
+                    <br>
+                </div>
+            `
+        })
+
+        new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+</html>
