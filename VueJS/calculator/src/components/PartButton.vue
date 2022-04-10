@@ -1,5 +1,7 @@
 <template>
+  <!--O evento click executa a função padrão vue "$emit()" que emite/dispara um determinado evento personalizado passado como parâmetro e como segundo parâmetro é passado o valor de label-->
   <button class="button"
+    @click="$emit('onClick', label)" 
     :class="{ doble, triple, operation }"> <!--Nesse caso se doble ou triple ou operation for "true" será aplicada uma classe com mesmo nome do atributo "como a classe terá o mesmo nome que a propriedade condicional nessse caso é possível escrever só a propriedade" -->
       {{ label }}
   </button>

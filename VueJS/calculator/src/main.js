@@ -3,7 +3,8 @@ import Vue from 'vue'
 import App from './App'
 
 new Vue({
-    render: h => h(App) //mesmo código das linhas abaixo de forma reduzida
+    render: h => h(App) 
+    //mesmo código das linhas abaixo de forma reduzida
     //função de render que tem como parametro uma funcao createElement, ela pega esse componente e renderiza na página como um componente Raiz com outros componentes dentro
     /*
     render(createElement){ 

@@ -1,15 +1,15 @@
 <template>
   <div id="app">
       <h1>Calculadora</h1>
-      <Calculator />
+      <MainCalculator />
   </div>
 </template>
 
 <script>
-import Calculator from "./main/Calculator"
+import MainCalculator from "./main/MainCalculator"
 
 export default {
-    components: { Calculator }
+    components: { MainCalculator }
 }
 </script>
 
