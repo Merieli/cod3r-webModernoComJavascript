@@ -10,7 +10,20 @@
 </head>
 
 <body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <div>
+            <input type="text" size="25"
+                placeholder="Digite para gerar..."
+                v-model="text" 
+            > <!--O "v-model" faz com que o valor do input seja capturado para o atributo text-->
+            <!--"@input" monitora quando for inserido algum valor no input-->
+        </div>
 
+        <div v-if="text" class="output">
+            <img :src="newQRCode" alt="QRCode">
+        </div>
+    </div>
     <script>
         new Vue({
             el: "#app",
@@ -23,11 +36,6 @@
                 newQRCode(){
                     this.qrcode.value = this.text
                     return this.qrcode.toDataURL() //gera um atributo data que pode ser associado a uma imagem para gerar o qrcode
-                }
-            },
-            methods: {
-                onData(event){
-                    this.text = event.target.value
                 }
             }
         })
