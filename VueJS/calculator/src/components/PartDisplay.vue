@@ -14,7 +14,6 @@ export default {
     .display{
         grid-column: span 4;
         background-color: #0004;
-
         display: flex;
         justify-content: flex-end;
         align-items: center;

@@ -27,7 +27,7 @@ import PartDisplay from '../components/PartDisplay'
 
 //para usar os componentes importados é preciso registrá-los dentro do export default
 export default { 
-    data: function(){
+    data(){
         return {
             displayValue: "", //valor do display
             clearDisplay: false, //define se o display será limpo ou não "no caso de digitar varios zeros ele é limpo, ou no caso de ter o 0 digitado e inserir qualquer outro numero, ou no caso de clicar em um botão de operação e depois em um numero ele tambem será limpo"
